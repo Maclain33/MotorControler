@@ -1,0 +1,2 @@
+- this is  motor Controller code it for l298n device drive  and Arduino Uno use all digital and analog pin to let run my future project a.
+- and I have another project I will talk to your about it later then I will be able to do it just robot but in diference component.
