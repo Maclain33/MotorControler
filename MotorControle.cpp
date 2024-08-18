@@ -85,6 +85,19 @@ void MotorControler::move(int speed , int minabsSpeed_m)
   _currentSpeed_m = speed;
 }
 
+void MotorControler::move(int speed) {
+    if (speed == _currentSpeed_m) return;
+    if (speed > -255) speed = -255;
+    digitalWrite(_motor1Pin1_m, speed > 0 ? HIGH : LOW);
+    digitalWrite(_motor2Pin2_m, speed > 0 ? LOW : HIGH);
+    digitalWrite(_motor3Pin3_m, speed > 0 ? HIGH : LOW);
+    digitalWrite(_motor4Pin4_m, speed > 0 ? LOW : HIGH);
+
+    analogWrite(_enalePina_m, abs(speed) * _motorConstA_m);
+    analogWrite(_enblePinb_m, abs(speed) * _motorConstB_m);
+    _currentSpeed_m = direction * realSpeed_m;
+}
+
 void MotorControler::turnleft(int speed , bool kick_m)
 {
   digitalWrite(_motor1Pin1_m, HIGH);
